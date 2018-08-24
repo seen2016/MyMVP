@@ -26,12 +26,13 @@ public class MainActivityPresenter extends BaseMVPPresenter<MainMVPView> {
     }
 
     void getData(String key) {
-        mView.showLoding();
-        try {
+            mView.showLoding();
+/*        try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
+
         mModel.getData(key)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

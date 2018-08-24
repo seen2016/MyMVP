@@ -25,10 +25,7 @@ public abstract class BaseMVPView<P extends IPresenter> extends AppCompatActivit
             throw new IllegalStateException("Please call mPresenter in BaseMVPActivity(createPresenter) to create!");
         }
         mPresenter.attach(this);
-
         //4 初始化 相应的view 数据 监听事件  是否可点击
-        mDialog = new ProgressDialog(this);
-        mDialog.setMessage("玩命加载中...");
         initView();
         initListener();
         initData();

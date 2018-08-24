@@ -1,6 +1,7 @@
 package com.seen.mvp.mymvp;
 
 import android.app.ProgressDialog;
+import android.widget.Toast;
 
 import com.seen.mvp.mymvplib.base.BaseMVPView;
 import com.seen.mvp.mymvplib.bean.ArticleBean;
@@ -23,7 +24,7 @@ public class MainActivity extends BaseMVPView<MainActivityPresenter> implements 
      */
     @Override
     protected void initData() {
-        mDialog.show();
+//        mDialog.show();
         mPresenter.getData(APP_KEY);
     }
 
@@ -40,8 +41,8 @@ public class MainActivity extends BaseMVPView<MainActivityPresenter> implements 
      */
     @Override
     protected void initView() {
-        mDialog = new ProgressDialog(this);
-        mDialog.setMessage("MainActivity页面玩命加载中...");
+/*        mDialog = new ProgressDialog(this);
+        mDialog.setMessage("MainActivity页面玩命加载中...");*/
     }
 
     /**
@@ -72,12 +73,10 @@ public class MainActivity extends BaseMVPView<MainActivityPresenter> implements 
 
     @Override
     public void getDataFail(String failMsg) {
-
+        Toast.makeText(this,failMsg,Toast.LENGTH_LONG).show();
     }
 
-
-
-/*    @Override
+    @Override
     public void showLoding() {
         if (null == mDialog) {
             mDialog = new ProgressDialog(this);
@@ -94,5 +93,5 @@ public class MainActivity extends BaseMVPView<MainActivityPresenter> implements 
         {
             mDialog.hide();
         }
-    }*/
+    }
 }
