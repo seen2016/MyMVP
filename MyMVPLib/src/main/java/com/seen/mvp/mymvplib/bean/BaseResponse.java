@@ -1,10 +1,10 @@
 package com.seen.mvp.mymvplib.bean;
 
-public class BaseResponse {
+public class BaseResponse<T> {
 
     private int error_code;
     private String reason;
-    private ResponseData result;
+    private T result;
 
     public int getError_code() {
         return error_code;
@@ -22,7 +22,7 @@ public class BaseResponse {
         this.reason = reason;
     }
 
-    public ResponseData getResult() {
+    public T getResult() {
         return result;
     }
 
@@ -35,7 +35,7 @@ public class BaseResponse {
                 '}';
     }
 
-    public void setResult(ResponseData result) {
+    public void setResult(T result) {
         this.result = result;
     }
 }

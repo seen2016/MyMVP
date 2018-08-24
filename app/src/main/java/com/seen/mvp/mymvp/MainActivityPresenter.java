@@ -1,16 +1,21 @@
 package com.seen.mvp.mymvp;
 
 import com.seen.mvp.mymvplib.base.BaseMVPPresenter;
-import com.seen.mvp.mymvplib.bean.ArticleBean;
 import com.seen.mvp.mymvplib.bean.BaseResponse;
-import com.seen.mvp.mymvplib.bean.ResponseData;
+import com.seen.mvp.mymvplib.bean.DetailTaskResultEntity;
 import com.seen.mvp.mymvplib.mode.DataModel;
+
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
 
 import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 
@@ -44,9 +49,9 @@ public class MainActivityPresenter extends BaseMVPPresenter<MainMVPView> {
 
                     @Override
                     public void onNext(BaseResponse baseResponse) {
-                        ResponseData result = baseResponse.getResult();
+                   /*     ResponseData result = baseResponse.getResult();
                         List<ArticleBean> list = result.getList();
-                        mView.getDataSuccess(list);
+                        mView.getDataSuccess(list);*/
                     }
 
                     @Override
@@ -58,6 +63,35 @@ public class MainActivityPresenter extends BaseMVPPresenter<MainMVPView> {
                     @Override
                     public void onComplete() {
                         mView.hideLogding();
+                    }
+                });
+
+    }
+
+    void queryTaskDetail(String key) {
+        mView.showLoding();
+        mModel.queryTaskDetail(key)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<DetailTaskResultEntity>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(DetailTaskResultEntity detailTaskResultEntity) {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
                 });
 
