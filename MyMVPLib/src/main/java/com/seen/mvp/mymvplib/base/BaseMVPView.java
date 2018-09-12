@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 /**
  * Created by seen on 2018/8/18.
@@ -26,10 +27,10 @@ public abstract class BaseMVPView<P extends IPresenter> extends AppCompatActivit
         }
         mPresenter.attach(this);
         //4 初始化 相应的view 数据 监听事件  是否可点击
-        initView();
+/*        initView();
         initListener();
         initData();
-        initEnableView();
+        initEnableView();*/
 
     }
 
